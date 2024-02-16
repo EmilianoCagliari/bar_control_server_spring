@@ -14,6 +14,7 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+
     @GetMapping()
     public String testuser() {
         return "test user api";
