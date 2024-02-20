@@ -1,36 +1,39 @@
 package com.barcontrol.server.entity;
 
+import com.barcontrol.server.entity.enums.Roles;
 import jakarta.persistence.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -2185803412812655677L;
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
+    @Column
     private String name;
-
+    @Column
     private String surname;
-
+    @Column
     private String email;
-
+    @Column
     private String password;
-
-    private Integer role;
-
+    @Column
+    private Integer role = Roles.User.getValue();
+    @Column
     private Boolean isActive;
-
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
+    @Column
     private Date createdAt;
-
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
+    @Column
     private Date updatedAt;
 
 
@@ -40,7 +43,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String email, String password, Integer role, Boolean isActive, Date createdAt, Date updatedAt) {
+    public User(Integer id, String name, String surname, String email, String password, Integer role, Boolean isActive, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -52,11 +55,11 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

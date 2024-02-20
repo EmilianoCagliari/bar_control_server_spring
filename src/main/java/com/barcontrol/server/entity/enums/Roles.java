@@ -4,13 +4,13 @@ public enum Roles {
 
     User(1), Admin(2);
 
-    private int value;
+    private Integer value;
     private Roles( int value ) {
         this.value = value;
     }
 
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 }
