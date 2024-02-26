@@ -9,3 +9,18 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate.ddl-auto: update
+
+# oauth2 configuration
+security:
+  oauth2:
+    client:
+      client-id: barcontrol-front
+      client-secret: 8sX927fgAC9F2cSLpeRoJc9JN
+      authorized-grant-type: password,authorization_code,refresh_code,implicit
+      scope: openid
+
+barcontrol-front:
+  oauth:
+    enabled: true
+    accessTokenValiditySeconds: 86400
+    refreshTokenValiditySeconds: 86400
